@@ -20,12 +20,12 @@ func NewConfig(c Config) *chatgpt {
 	}
 }
 
-func (c *chatgpt) ChatCompletionsWithModelGPT35Turbo(b ModelGPT35Turbo) (*ModelGPT35TurboResponse, error) {
+func (c *chatgpt) ChatCompletions(b ModelChat) (*ModelChatResponse, error) {
 	client := resty.New()
 
 	endpointChatCompletions := fmt.Sprintf("%s/chat/completions", ChatGPTAPIV1)
 
-	result := ModelGPT35TurboResponse{}
+	result := ModelChatResponse{}
 
 	_, err := client.R().
 		EnableTrace().
@@ -42,12 +42,12 @@ func (c *chatgpt) ChatCompletionsWithModelGPT35Turbo(b ModelGPT35Turbo) (*ModelG
 	return &result, nil
 }
 
-func (c *chatgpt) CompletionsWithModelTextDavinci003(b ModelTextDavinci003) (*ModelTextDavinci003Response, error) {
+func (c *chatgpt) Completions(b ModelText) (*ModelTextResponse, error) {
 	client := resty.New()
 
 	endpointCompletions := fmt.Sprintf("%s/completions", ChatGPTAPIV1)
 
-	result := ModelTextDavinci003Response{}
+	result := ModelTextResponse{}
 
 	_, err := client.R().
 		EnableTrace().

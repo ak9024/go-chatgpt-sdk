@@ -5,7 +5,7 @@ type Message struct {
 	Content string `json:"content"`
 }
 
-type ModelGPT35Turbo struct {
+type ModelChat struct {
 	Model            string    `json:"model"`
 	Messages         []Message `json:"messages"`
 	MaxTokens        int       `json:"max_tokens,omitempty"`
@@ -21,7 +21,7 @@ type Choice struct {
 	FinishReason string  `json:"finish_reason"`
 }
 
-type ChoiceTextDavinci003 struct {
+type ChoiceText struct {
 	Text         string      `json:"text"`
 	Index        int         `json:"index"`
 	Logprobs     interface{} `json:"logprobs"`
@@ -34,7 +34,7 @@ type Usage struct {
 	TotalTokens      int `json:"total_tokens"`
 }
 
-type ModelGPT35TurboResponse struct {
+type ModelChatResponse struct {
 	ID      string   `json:"id"`
 	Object  string   `json:"object"`
 	Created int64    `json:"created"`
@@ -42,16 +42,16 @@ type ModelGPT35TurboResponse struct {
 	Usage   Usage    `json:"usage"`
 }
 
-type ModelTextDavinci003Response struct {
-	ID      string                 `json:"id"`
-	Object  string                 `json:"object"`
-	Created int64                  `json:"created"`
-	Model   string                 `json:"model"`
-	Choices []ChoiceTextDavinci003 `json:"choices"`
-	Usage   Usage                  `json:"usage"`
+type ModelTextResponse struct {
+	ID      string       `json:"id"`
+	Object  string       `json:"object"`
+	Created int64        `json:"created"`
+	Model   string       `json:"model"`
+	Choices []ChoiceText `json:"choices"`
+	Usage   Usage        `json:"usage"`
 }
 
-type ModelTextDavinci003 struct {
+type ModelText struct {
 	Model            string `json:"model"`
 	Prompt           string `json:"prompt"`
 	MaxTokens        int    `json:"max_tokens,omitempty"`
