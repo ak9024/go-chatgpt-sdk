@@ -1,17 +1,16 @@
-# go-chatgpt-sdk
-
 <div align="center">
     <img src="./assets/logo.png">
-    <p>This library provides unofficial Go client SDK for [OpenAI API](https://platform.openai.com)</p>
+    <h2>go-chatgpt-sdk</h2>
+    <p>This library provides unofficial Go client SDK for OpenAI API</p>
 </div>
 
-## Install
+### Install
 
 ```bash
 go get -u github.com/ak9024/go-chatgpt-sdk
 ```
 
-## Model Support
+### Model Support
 
 - [x] Chat
 - [x] Text
@@ -20,12 +19,12 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [ ] Audio
 - [ ] Other
 
-## Prerequisite
+### Prerequisite
 
 - [Go](https://go.dev/doc/install)
 - [OpenAI Key](https://platform.openai.com/account/api-keys)
 
-## Usage
+### Usage
 
 ```go
 import (
