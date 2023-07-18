@@ -13,8 +13,8 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [x] Chat
 - [x] Text
 - [ ] Moderation
-- [ ] Dall.E 2
-- [ ] Whisper 1
+- [ ] Image
+- [ ] Audio
 - [ ] Other
 
 ## Prerequisite
@@ -50,7 +50,7 @@ func main() {
 }
 ```
 
-### Usage with `text-davinci-003`
+### Usage with model text
 
 ```go
 func main() {
