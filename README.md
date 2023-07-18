@@ -1,5 +1,7 @@
 # go-chatgpt-sdk
 
+ChatGPT SDK for Go Language, inspired by [chatgpt-go](https://github.com/chatgp/chatgpt-go), but with a different approach, this lib provide a response [struct](./struct.go).
+
 ## Install
 
 ```bash
