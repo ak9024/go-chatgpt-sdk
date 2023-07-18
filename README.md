@@ -11,6 +11,11 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [x] gpt-3.5-turbo
 - [x] text-davinci-003
 
+## Prerequisite
+
+- (Go)[https://go.dev/doc/install]
+- (ChatGPT Open API Key)[https://platform.openai.com/account/api-keys]
+
 ## Usage
 
 ```go
