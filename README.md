@@ -20,8 +20,6 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 
 ```go
 import (
-    "fmt"
-
 	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
 )
 
@@ -43,8 +41,6 @@ func main() {
 			},
 		},
 	})
-
-	fmt.Println(resp.Choices[len(resp.Choices)-1].Message.Content)
 }
 ```
 
