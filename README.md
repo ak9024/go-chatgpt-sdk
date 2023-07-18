@@ -16,7 +16,7 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 ## Prerequisite
 
 - [Go](https://go.dev/doc/install)
-- [ChatGPT Open API Key](https://platform.openai.com/account/api-keys)
+- [OpenAI Key](https://platform.openai.com/account/api-keys)
 
 ## Usage
 
