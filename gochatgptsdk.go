@@ -42,7 +42,7 @@ func (c *chatgpt) ChatCompletionsWithModelGPT35Turbo(b ModelGPT35Turbo) (*ModelG
 	return &result, nil
 }
 
-func (c *chatgpt) CompletionWithModelTextDavinci003(b ModelTextDavinci003) (*ModelTextDavinci003Response, error) {
+func (c *chatgpt) CompletionsWithModelTextDavinci003(b ModelTextDavinci003) (*ModelTextDavinci003Response, error) {
 	client := resty.New()
 
 	endpointCompletions := fmt.Sprintf("%s/completions", ChatGPTAPIV1)

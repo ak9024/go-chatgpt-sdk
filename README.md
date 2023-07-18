@@ -50,7 +50,7 @@ func main() {
 
 ```go
 func main() {
-	resp, _ := c.CompletionWithModelTextDavinci003(gochatgptsdk.ModelTextDavinci003{
+	resp, _ := c.CompletionsWithModelTextDavinci003(gochatgptsdk.ModelTextDavinci003{
 		Model:     gochatgptsdk.TextDavinci003,
 		Prompt:    "Bagaimana cuaca kota palu hari ini?",
 		MaxTokens: 100,
