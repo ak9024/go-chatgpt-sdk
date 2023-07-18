@@ -1,6 +1,6 @@
 # go-chatgpt-sdk
 
-ChatGPT SDK for Go Language, inspired by [chatgpt-go](https://github.com/chatgp/chatgpt-go), but with a different approach, this lib provides a response [struct](./struct.go).
+This library provides unofficial Go client SDK for [OpenAI API](https://platform.openai.com/), inspired by [chatgpt-go](https://github.com/chatgp/chatgpt-go) but with a different approach, this library provides a response [struct](./struct.go)
 
 ## Install
 
