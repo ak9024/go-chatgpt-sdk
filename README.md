@@ -1,6 +1,9 @@
 # go-chatgpt-sdk
 
-This library provides unofficial Go client SDK for [OpenAI API](https://platform.openai.com/), inspired by [chatgpt-go](https://github.com/chatgp/chatgpt-go) but with a different approach, this library provides a response [struct](./struct.go)
+<div align="center">
+    <img src="./assets/logo.png">
+    <p>This library provides unofficial Go client SDK for [OpenAI API](https://platform.openai.com)</p>
+</div>
 
 ## Install
 
@@ -61,7 +64,7 @@ func main() {
 }
 ```
 
-## Model Options
+### Model Options
 
 |                MODEL                |    TPM     |  RPM  |
 | :---------------------------------: | :--------: | :---: |
