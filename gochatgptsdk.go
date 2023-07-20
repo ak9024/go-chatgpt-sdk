@@ -21,20 +21,15 @@ func NewConfig(c Config) *chatgpt {
 }
 
 func (c *chatgpt) ChatCompletions(b ModelChat) (*ModelChatResponse, error) {
-	client := resty.New()
-
+	// POST https://api.openai.com/v1/chat/completions
 	endpointChatCompletions := fmt.Sprintf("%s/chat/completions", ChatGPTAPIV1)
 
 	result := ModelChatResponse{}
 
-	_, err := client.R().
-		EnableTrace().
-		SetHeader("Content-Type", "application/json").
-		SetAuthToken(c.OpenAIKey).
+	_, err := DoRequest(c.OpenAIKey).
 		SetBody(b).
 		SetResult(&result).
 		Post(endpointChatCompletions)
-
 	if err != nil {
 		return nil, err
 	}
@@ -43,23 +38,27 @@ func (c *chatgpt) ChatCompletions(b ModelChat) (*ModelChatResponse, error) {
 }
 
 func (c *chatgpt) Completions(b ModelText) (*ModelTextResponse, error) {
-	client := resty.New()
-
+	// POST https://api.openai.com/v1/completions
 	endpointCompletions := fmt.Sprintf("%s/completions", ChatGPTAPIV1)
 
 	result := ModelTextResponse{}
 
-	_, err := client.R().
-		EnableTrace().
-		SetHeader("Content-Type", "application/json").
-		SetAuthToken(c.OpenAIKey).
+	_, err := DoRequest(c.OpenAIKey).
 		SetBody(b).
 		SetResult(&result).
 		Post(endpointCompletions)
-
 	if err != nil {
 		return nil, err
 	}
 
 	return &result, nil
+}
+
+// DoRequest(t string) to compose HTTP Request
+func DoRequest(t string) *resty.Request {
+	client := resty.New()
+	return client.R().
+		EnableTrace().
+		SetHeader("Content-Type", "application/json").
+		SetAuthToken(t)
 }
