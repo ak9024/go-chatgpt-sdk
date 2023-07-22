@@ -63,15 +63,25 @@ type ModelText struct {
 
 type ModelImages struct {
 	Prompt         string `json:"prompt"`
-	N              int    `json:"n,omitempty"`
+	N              int    `json:"n,omitempty"`               // default to 1
+	Size           string `json:"size,omitempty"`            // default 1024x1024
+	ResponseFormat string `json:"response_format,omitempty"` // url or b64_json
+	User           string `json:"user,omitempty"`
+}
+
+type ModelImagesEdits struct {
+	Image          string `json:"image"`          // must be valid PNG file, less than 4MB, and square
+	Mask           string `json:"mask,omitempty"` // must be valid PNG file, less than 4MB, and square
+	Prompt         string `json:"prompt"`
+	N              string `json:"n,omitempty"`               // default to 1
 	Size           string `json:"size,omitempty"`            // default 1024x1024
 	ResponseFormat string `json:"response_format,omitempty"` // url or b64_json
 	User           string `json:"user,omitempty"`
 }
 
 type ModelImagesVariations struct {
-	Image          string `json:"image"` // must be valid PNG file, less than 4MB, and square
-	N              string `json:"n,omitempty"`
+	Image          string `json:"image"`                     // must be valid PNG file, less than 4MB, and square
+	N              string `json:"n,omitempty"`               // default to 1
 	Size           string `json:"size,omitempty"`            // default 1024x1024
 	ResponseFormat string `json:"response_format,omitempty"` // url or b64_json
 	User           string `json:"user,omitempty"`
