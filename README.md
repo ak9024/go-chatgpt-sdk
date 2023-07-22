@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./assets/logo.png">
     <h2>go-chatgpt-sdk</h2>
-    <p>This Library Provides Unofficial Go client SDK for OpenAI API</p>
+    <p>This Library Provides Unofficial Go Client SDK for OpenAI API</p>
 </div>
 
 ### Install
@@ -141,4 +141,4 @@ func main() {
 }
 ```
 
-For all of return please read more in file [struct](./struct.go)
+For all of response struct please read more in file [struct_response.go](./struct_response.go)
