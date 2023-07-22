@@ -89,7 +89,7 @@ func main() {
 
 ### Usage with model images
 
-> Create images, please use `c.ImagesGenerations`, but if you want generate base64 image usage `c,InageGenerationsB64JSON`
+> Create images, please use `c.ImagesGenerations`, but if you want generate base64 image usage `c.ImageGenerationsB64JSON`
 
 ```go
 package main
@@ -115,7 +115,7 @@ func main() {
 }
 ```
 
-> Create images variations of a given image, please use `c.ImagesVariations()` but if you want generate base64 image usage `c,InageVariationsB64JSON`
+> Create images variations of a given image, please use `c.ImagesVariations()` but if you want generate base64 image usage `c.ImageVariationsB64JSON`
 
 ```go
 package main
