@@ -199,20 +199,39 @@ func (c *chatgpt) ImagesEdits(b *ModelImagesEdits) (*ModelImagesResponse[DataURL
 		b.User = "user"
 	}
 
-	_, err := DoRequest(c.OpenAIKey).
-		SetFiles(map[string]string{
-			"image": *&b.Image,
-		}).
-		SetFormData(map[string]string{
-			"n":               b.N,
-			"size":            b.Size,
-			"response_format": b.ResponseFormat,
-			"user":            b.User,
-		}).
-		SetResult(&result).
-		Post(endpointImagesEdits)
-	if err != nil {
-		return nil, err
+	if b.Mask == "" {
+		_, err := DoRequest(c.OpenAIKey).
+			SetFiles(map[string]string{
+				"image": *&b.Image,
+			}).
+			SetFormData(map[string]string{
+				"n":               b.N,
+				"size":            b.Size,
+				"response_format": b.ResponseFormat,
+				"user":            b.User,
+			}).
+			SetResult(&result).
+			Post(endpointImagesEdits)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		_, err := DoRequest(c.OpenAIKey).
+			SetFiles(map[string]string{
+				"image": *&b.Image,
+				"mask":  *&b.Mask,
+			}).
+			SetFormData(map[string]string{
+				"n":               b.N,
+				"size":            b.Size,
+				"response_format": b.ResponseFormat,
+				"user":            b.User,
+			}).
+			SetResult(&result).
+			Post(endpointImagesEdits)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	return &result, nil
