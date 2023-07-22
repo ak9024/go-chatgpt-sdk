@@ -62,14 +62,13 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
 )
 
 func main() {
 	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
-		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
+		OpenAIKey: "",
 	})
 
 	resp, _ := c.Completions(gochatgptsdk.ModelText{
@@ -91,14 +90,13 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
 )
 
 func main() {
 	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
-		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
+		OpenAIKey: "",
 	})
 
 	resp, _ := c.ImagesGenerations(gochatgptsdk.ModelImages{
@@ -118,14 +116,13 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
 )
 
 func main() {
 	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
-		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
+		OpenAIKey: "",
 	})
 
 	resp, _ := c.ImagesVariations(gochatgptsdk.ModelImagesVariations{
