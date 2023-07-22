@@ -49,12 +49,12 @@ func (c *chatgpt) ImagesVariations(b ModelImagesVariations) (*ModelImagesRespons
 
 	// to prevent nil pointer, we need to check if size empty, fill with default value
 	if b.Size == "" {
-		b.Size = "1024x1024"
+		b.Size = Size1024
 	}
 
 	// to prevent nil pointer, we need to check if response_format empty, fill with default value
 	if b.ResponseFormat == "" {
-		b.ResponseFormat = "url"
+		b.ResponseFormat = ResponseFormatURL
 	}
 
 	// to prevent nil pointer, we need to check if user empty, fill with default value
@@ -92,12 +92,12 @@ func (c *chatgpt) ImagesVariationsB64JSON(b ModelImagesVariations) (*ModelImages
 
 	// to prevent nil pointer, we need to check if size empty, fill with default value
 	if b.Size == "" {
-		b.Size = "1024x1024"
+		b.Size = Size1024
 	}
 
 	// to prevent nil pointer, we need to check if response_format empty, fill with default value
 	if b.ResponseFormat == "" {
-		b.ResponseFormat = "url"
+		b.ResponseFormat = ResponseFormatB64JSON
 	}
 
 	// to prevent nil pointer, we need to check if user empty, fill with default value
@@ -135,12 +135,12 @@ func (c *chatgpt) ImagesEdits(b *ModelImagesEdits) (*ModelImagesResponse[DataURL
 
 	// to prevent nil pointer, we need to check if size empty, fill with default value
 	if b.Size == "" {
-		b.Size = "1024x1024"
+		b.Size = Size1024
 	}
 
 	// to prevent nil pointer, we need to check if response_format empty, fill with default value
 	if b.ResponseFormat == "" {
-		b.ResponseFormat = "url"
+		b.ResponseFormat = ResponseFormatURL
 	}
 
 	// to prevent nil pointer, we need to check if user empty, fill with default value
