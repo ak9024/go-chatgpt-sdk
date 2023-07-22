@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./assets/logo.png">
     <h2>go-chatgpt-sdk</h2>
-    <p>This library provides unofficial Go client SDK for OpenAI API</p>
+    <p>This Library Provides Unofficial Go client SDK for OpenAI API</p>
 </div>
 
 ### Install
@@ -15,7 +15,7 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [x] Chat
 - [x] Text
 - [x] Image
-- [ ] Modeerations
+- [ ] Moderations
 - [ ] Audio
 
 ### Prerequisite
@@ -23,12 +23,16 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [Go](https://go.dev/doc/install)
 - [OpenAI Key](https://platform.openai.com/account/api-keys)
 
-### Usage
+### Usage model chat
 
 > to usage with model chat, please usage `c.ChatCompletions`
 
 ```go
+package main
+
 import (
+	"fmt"
+
 	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
 )
 
@@ -38,18 +42,20 @@ func main() {
 	})
 
 	resp, _ := c.ChatCompletions(gochatgptsdk.ModelChat{
-		Model: "gpt-3.5-turbo-16k",
+		Model: "gpt-3.5-turbo",
 		Messages: []gochatgptsdk.Message{
 			{
 				Role:    "system",
-				Content: "You are a helpful assistant",
+				Content: "You are a Software engineer",
 			},
 			{
 				Role:    "user",
-				Content: "How the weather today?",
+				Content: "Please create a simple function to using Go language",
 			},
 		},
 	})
+
+	fmt.Println(resp.Choices)
 }
 ```
 
@@ -73,7 +79,7 @@ func main() {
 
 	resp, _ := c.Completions(gochatgptsdk.ModelText{
 		Model:     "text-davinci-003",
-		Prompt:    "Please info what the weather today in Kota Palu?",
+		Prompt:    "What the weather Kota Palu for today?",
 		MaxTokens: 100, // max generates of word
 	})
 
@@ -83,7 +89,7 @@ func main() {
 
 ### Usage with model images
 
-> Create images, please use `c.ImagesGenerations`
+> Create images, please use `c.ImagesGenerations`, but if you want generate base64 image usage `c,InageGenerationsB64JSON`
 
 ```go
 package main
@@ -109,7 +115,7 @@ func main() {
 }
 ```
 
-> Create images variations of a given image, please use `c.ImagesVariations()`
+> Create images variations of a given image, please use `c.ImagesVariations()` but if you want generate base64 image usage `c,InageVariationsB64JSON`
 
 ```go
 package main
@@ -134,3 +140,5 @@ func main() {
 	fmt.Println(resp.Data)
 }
 ```
+
+For all of return please read more in file [struct](./struct.go)
