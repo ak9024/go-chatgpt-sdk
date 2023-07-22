@@ -54,6 +54,86 @@ func (c *chatgpt) Completions(b ModelText) (*ModelTextResponse, error) {
 	return &result, nil
 }
 
+func (c *chatgpt) ImagesGenerations(b ModelImages) (*ModelImagesResponse[DataURL], error) {
+	// POST https://api.openai.com/v1/images/generations
+	endpointImagesGeneratios := fmt.Sprintf("%s/images/generations", ChatGPTAPIV1)
+
+	result := ModelImagesResponse[DataURL]{}
+
+	_, err := DoRequest(c.OpenAIKey).
+		SetBody(b).
+		SetResult(&result).
+		Post(endpointImagesGeneratios)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *chatgpt) ImagesGenerationsB64JSON(b ModelImages) (*ModelImagesResponse[DataB64JSON], error) {
+	// POST https/api.openai.com/v1/images/generations
+	endpointImagesGeneratios := fmt.Sprintf("%s/images/generations", ChatGPTAPIV1)
+
+	result := ModelImagesResponse[DataB64JSON]{}
+
+	_, err := DoRequest(c.OpenAIKey).
+		SetBody(b).
+		SetResult(&result).
+		Post(endpointImagesGeneratios)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *chatgpt) ImagesVariations(b *ModelImagesVariations) (*ModelImagesResponse[DataURL], error) {
+	// POST https/api.openai.com/v1/images/variations
+	endpointImagesVariations := fmt.Sprintf("%s/images/variations", ChatGPTAPIV1)
+
+	result := ModelImagesResponse[DataURL]{}
+
+	_, err := DoRequest(c.OpenAIKey).
+		SetFile("image", *&b.Image).
+		SetFormData(map[string]string{
+			"n":               b.N,
+			"size":            b.Size,
+			"response_format": b.ResponseFormat,
+			"user":            b.User,
+		}).
+		SetResult(&result).
+		Post(endpointImagesVariations)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *chatgpt) ImagesVariationsB64JSON(b *ModelImagesVariations) (*ModelImagesResponse[DataB64JSON], error) {
+	// POST https/api.openai.com/v1/images/variations
+	endpointImagesVariations := fmt.Sprintf("%s/images/variations", ChatGPTAPIV1)
+
+	result := ModelImagesResponse[DataB64JSON]{}
+
+	_, err := DoRequest(c.OpenAIKey).
+		SetFile("image", *&b.Image).
+		SetFormData(map[string]string{
+			"n":               b.N,
+			"size":            b.Size,
+			"response_format": b.ResponseFormat,
+			"user":            b.User,
+		}).
+		SetResult(&result).
+		Post(endpointImagesVariations)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 // DoRequest(t string) to compose HTTP Request
 func DoRequest(t string) *resty.Request {
 	client := resty.New()
