@@ -15,7 +15,7 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [x] Chat
 - [x] Text
 - [ ] Moderation
-- [ ] Image
+- [x] Image
 - [ ] Audio
 - [ ] Other
 
