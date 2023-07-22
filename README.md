@@ -14,10 +14,9 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 
 - [x] Chat
 - [x] Text
-- [ ] Moderation
 - [x] Image
+- [ ] Modeerations
 - [ ] Audio
-- [ ] Other
 
 ### Prerequisite
 
@@ -25,6 +24,8 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [OpenAI Key](https://platform.openai.com/account/api-keys)
 
 ### Usage
+
+> to usage with model chat, please usage `c.ChatCompletions`
 
 ```go
 import (
@@ -54,79 +55,85 @@ func main() {
 
 ### Usage with model text
 
+> To usage with model text, please usage `c.Completions()`
+
 ```go
+package main
+
+import (
+	"fmt"
+	"os"
+
+	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
+)
+
 func main() {
-	resp, _ := c.Completions(gochatgptsdk.ModelText{
-		Model:  "text-davinci-003",
-		Prompt: "What the weather today?",
+	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
+		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
 	})
+
+	resp, _ := c.Completions(gochatgptsdk.ModelText{
+		Model:     "text-davinci-003",
+		Prompt:    "Please info what the weather today in Kota Palu?",
+		MaxTokens: 100, // max generates of word
+	})
+
+	fmt.Println(resp.Choices)
 }
 ```
 
-### Model Options
+### Usage with model images
 
-|                MODEL                |    TPM     |  RPM  |
-| :---------------------------------: | :--------: | :---: |
-|                CHAT                 |            |       |
-|            gpt-3.5-turbo            |   90,000   | 3,500 |
-|         gpt-3.5-turbo-0301          |   90,000   | 3,500 |
-|         gpt-3.5-turbo-0613          |   90,000   | 3,500 |
-|          gpt-3.5-turbo-16k          |  180,000   | 3,500 |
-|       gpt-3.5-turbo-16k-0613        |  180,000   | 3,500 |
-|                TEXT                 |            |       |
-|                 ada                 |  250,000   | 3,000 |
-|        ada-code-search-code         |  250,000   | 3,000 |
-|        ada-code-search-text         |  250,000   | 3,000 |
-|         ada-search-document         |  250,000   | 3,000 |
-|          ada-search-query           |  250,000   | 3,000 |
-|           ada-similarity            |  250,000   | 3,000 |
-|               babbage               |  250,000   | 3,000 |
-|      babbage-code-search-code       |  250,000   | 3,000 |
-|      babbage-code-search-text       |  250,000   | 3,000 |
-|       babbage-search-document       |  250,000   | 3,000 |
-|        babbage-search-query         |  250,000   | 3,000 |
-|         babbage-similarity          |  250,000   | 3,000 |
-|        code-davinci-edit-001        |  150,000   |  20   |
-|      code-search-ada-code-001       |  250,000   | 3,000 |
-|      code-search-ada-text-001       |  250,000   | 3,000 |
-|    code-search-babbage-code-001     |  250,000   | 3,000 |
-|    code-search-babbage-text-001     |  250,000   | 3,000 |
-|                curie                |  250,000   | 3,000 |
-|         curie-instruct-beta         |  250,000   | 3,000 |
-|        curie-search-document        |  250,000   | 3,000 |
-|         curie-search-query          |  250,000   | 3,000 |
-|          curie-similarity           |  250,000   | 3,000 |
-|               davinci               |  250,000   | 3,000 |
-|        davinci-instruct-beta        |  250,000   | 3,000 |
-|       davinci-search-document       |  250,000   | 3,000 |
-|        davinci-search-query         |  250,000   | 3,000 |
-|         davinci-similarity          |  250,000   | 3,000 |
-|            text-ada-001             |  250,000   | 3,000 |
-|          text-babbage-001           |  250,000   | 3,000 |
-|           text-curie-001            |  250,000   | 3,000 |
-|          text-davinci-001           |  250,000   | 3,000 |
-|          text-davinci-002           |  250,000   | 3,000 |
-|          text-davinci-003           |  250,000   | 3,000 |
-|        text-davinci-edit-001        |  150,000   |  20   |
-|       text-embedding-ada-002        | 1,000,000  | 3,000 |
-|       text-search-ada-doc-001       |  250,000   | 3,000 |
-|      text-search-ada-query-001      |  250,000   | 3,000 |
-|     text-search-babbage-doc-001     |  250,000   | 3,000 |
-|    text-search-babbage-query-001    |  250,000   | 3,000 |
-|      text-search-curie-doc-001      |  250,000   | 3,000 |
-|     text-search-curie-query-001     |  250,000   | 3,000 |
-|     text-search-davinci-doc-001     |  250,000   | 3,000 |
-|    text-search-davinci-query-001    |  250,000   | 3,000 |
-|       text-similarity-ada-001       |  250,000   | 3,000 |
-|     text-similarity-babbage-001     |  250,000   | 3,000 |
-|      text-similarity-curie-001      |  250,000   | 3,000 |
-|     text-similarity-davinci-001     |  250,000   | 3,000 |
-|             MODERATION              |            |       |
-|       text-moderation-latest        |   1,250    | 1,000 |
-|       text-moderation-stable        |   1,250    | 1,000 |
-|                IMAGE                | IMG / MIN  |       |
-|              DALL·E 2               |     50     |   ∞   |
-|                AUDIO                |            |       |
-|              whisper-1              | 25,000,000 |  50   |
-|                OTHER                |            |       |
-| Default limits for all other models |  250,000   | 3,000 |
+> Create images, please use `c.ImagesGenerations`
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+
+	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
+)
+
+func main() {
+	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
+		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
+	})
+
+	resp, _ := c.ImagesGenerations(gochatgptsdk.ModelImages{
+		Prompt: "Sunset sketch art",
+		N:      5, // generates 5 images
+		Size:   gochatgptsdk.Size512, // with size 512x512
+	})
+
+	fmt.Println(resp.Data)
+}
+```
+
+> Create images variations of a given image, please use `c.ImagesVariations()`
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+
+	gochatgptsdk "github.com/ak9024/go-chatgpt-sdk"
+)
+
+func main() {
+	c := gochatgptsdk.NewConfig(gochatgptsdk.Config{
+		OpenAIKey: os.Getenv("OPENAI_API_KEY"),
+	})
+
+	resp, _ := c.ImagesVariations(gochatgptsdk.ModelImagesVariations{
+		Image: "./path/to/example-img.png", // please suitable with your path image
+		N:     "2",                  // generate 2 images
+		Size:  gochatgptsdk.Size256, // with size 256x256
+	})
+
+	fmt.Println(resp.Data)
+}
+```
