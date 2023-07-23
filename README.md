@@ -23,7 +23,7 @@ go get -u github.com/ak9024/go-chatgpt-sdk
 - [Go](https://go.dev/doc/install)
 - [OpenAI Key](https://platform.openai.com/account/api-keys)
 
-### Usage model chat
+### Usage with model chat
 
 > to usage with model chat, please usage `c.ChatCompletions`
 
@@ -141,4 +141,4 @@ func main() {
 }
 ```
 
-For all of response struct please read more in file [struct_response.go](./struct_response.go)
+For all of response data please read more in file [struct_response.go](./struct_response.go)
