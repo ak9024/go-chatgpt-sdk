@@ -45,8 +45,6 @@ func (c *chatgpt) ImagesVariations(b ModelImagesVariations) (*ModelImagesRespons
 	// set default images variations
 	d := defaultImagesVariations(b, ResponseFormatURL)
 
-	fmt.Println(d.N)
-
 	_, err := DoRequest(c.OpenAIKey).
 		SetFile("image", *&d.Image).
 		SetFormData(map[string]string{
