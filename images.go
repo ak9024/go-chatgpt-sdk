@@ -42,33 +42,18 @@ func (c *chatgpt) ImagesVariations(b ModelImagesVariations) (*ModelImagesRespons
 
 	result := ModelImagesResponse[DataURL]{}
 
-	// to prevent nil pointer, we need to check if n empty, fill with default value
-	if b.N == "" {
-		b.N = "1"
-	}
+	// set default images variations
+	d := defaultImagesVariations(b, ResponseFormatURL)
 
-	// to prevent nil pointer, we need to check if size empty, fill with default value
-	if b.Size == "" {
-		b.Size = Size1024
-	}
-
-	// to prevent nil pointer, we need to check if response_format empty, fill with default value
-	if b.ResponseFormat == "" {
-		b.ResponseFormat = ResponseFormatURL
-	}
-
-	// to prevent nil pointer, we need to check if user empty, fill with default value
-	if b.User == "" {
-		b.User = "user"
-	}
+	fmt.Println(d.N)
 
 	_, err := DoRequest(c.OpenAIKey).
-		SetFile("image", *&b.Image).
+		SetFile("image", *&d.Image).
 		SetFormData(map[string]string{
-			"n":               b.N,
-			"size":            b.Size,
-			"response_format": b.ResponseFormat,
-			"user":            b.User,
+			"n":               d.N,
+			"size":            d.Size,
+			"response_format": d.ResponseFormat,
+			"user":            d.User,
 		}).
 		SetResult(&result).
 		Post(endpointImagesVariations)
@@ -85,6 +70,27 @@ func (c *chatgpt) ImagesVariationsB64JSON(b ModelImagesVariations) (*ModelImages
 
 	result := ModelImagesResponse[DataB64JSON]{}
 
+	// set default images variations
+	d := defaultImagesVariations(b, ResponseFormatB64JSON)
+
+	_, err := DoRequest(c.OpenAIKey).
+		SetFile("image", *&b.Image).
+		SetFormData(map[string]string{
+			"n":               d.N,
+			"size":            d.Size,
+			"response_format": d.ResponseFormat,
+			"user":            d.User,
+		}).
+		SetResult(&result).
+		Post(endpointImagesVariations)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func defaultImagesVariations(b ModelImagesVariations, f string) *ModelImagesVariations {
 	// to prevent nil pointer, we need to check if n empty, fill with default value
 	if b.N == "" {
 		b.N = "1"
@@ -97,7 +103,7 @@ func (c *chatgpt) ImagesVariationsB64JSON(b ModelImagesVariations) (*ModelImages
 
 	// to prevent nil pointer, we need to check if response_format empty, fill with default value
 	if b.ResponseFormat == "" {
-		b.ResponseFormat = ResponseFormatB64JSON
+		b.ResponseFormat = f
 	}
 
 	// to prevent nil pointer, we need to check if user empty, fill with default value
@@ -105,19 +111,7 @@ func (c *chatgpt) ImagesVariationsB64JSON(b ModelImagesVariations) (*ModelImages
 		b.User = "user"
 	}
 
-	_, err := DoRequest(c.OpenAIKey).
-		SetFile("image", *&b.Image).
-		SetFormData(map[string]string{
-			"n":               b.N,
-			"size":            b.Size,
-			"response_format": b.ResponseFormat,
-			"user":            b.User,
-		}).
-		SetResult(&result).
-		Post(endpointImagesVariations)
-	if err != nil {
-		return nil, err
-	}
+	*&b.Image = b.Image
 
-	return &result, nil
+	return &b
 }
