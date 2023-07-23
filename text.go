@@ -1,19 +1,29 @@
 package gochatgptsdk
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
-func (c *chatgpt) Completions(b ModelText) (*ModelTextResponse, error) {
+func (c *chatgpt) Completions(b ModelText) (*ModelTextResponse, *ErrorResponse) {
 	// POST https://api.openai.com/v1/completions
 	endpointCompletions := fmt.Sprintf("%s/completions", ChatGPTAPIV1)
 
 	result := ModelTextResponse{}
+	errResponse := ErrorResponse{}
 
-	_, err := DoRequest(c.OpenAIKey).
+	resp, err := DoRequest(c.OpenAIKey).
 		SetBody(b).
 		SetResult(&result).
+		SetError(&errResponse).
 		Post(endpointCompletions)
 	if err != nil {
-		return nil, err
+		return nil, &errResponse
+	}
+
+	// if status code not 200 ok, please send error message
+	if resp.StatusCode() != http.StatusOK {
+		return nil, &errResponse
 	}
 
 	return &result, nil
