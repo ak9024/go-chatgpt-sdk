@@ -10,19 +10,20 @@ func (c *chatgpt) ChatCompletions(b ModelChat) (*ModelChatResponse, *ErrorRespon
 	endpointChatCompletions := fmt.Sprintf("%s/chat/completions", ChatGPTAPIV1)
 
 	result := ModelChatResponse{}
-	errMessage := ErrorResponse{}
+	errResponse := ErrorResponse{}
 
 	resp, err := DoRequest(c.OpenAIKey).
 		SetBody(b).
 		SetResult(&result).
-		SetError(&errMessage).
+		SetError(&errResponse).
 		Post(endpointChatCompletions)
 	if err != nil {
-		return nil, &errMessage
+		return nil, &errResponse
 	}
 
+	// if status code not 200 ok, please send error message
 	if resp.StatusCode() != http.StatusOK {
-		return nil, &errMessage
+		return nil, &errResponse
 	}
 
 	return &result, nil
