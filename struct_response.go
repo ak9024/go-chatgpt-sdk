@@ -63,3 +63,14 @@ type ModelImagesResponse[T DataURL | DataB64JSON] struct {
 	Created int64 `json:"created"`
 	Data    []T   `json:"data"`
 }
+
+type Error struct {
+	Code    interface{} `json:"code"`
+	Message string      `json:"message"`
+	Param   interface{} `json:"param"`
+	Type    string      `json:"type"`
+}
+
+type ErrorResponse struct {
+	Error Error `json:"error"`
+}
