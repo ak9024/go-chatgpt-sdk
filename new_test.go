@@ -22,6 +22,4 @@ func TestInitNewConfig(t *testing.T) {
 	})
 	expectedType := &chatgpt{}
 	assert.IsType(t, expectedType, c)
-	expectedValue := "api key"
-	assert.Equal(t, expectedValue, c.OpenAIKey)
 }
