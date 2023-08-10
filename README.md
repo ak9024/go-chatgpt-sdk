@@ -142,4 +142,4 @@ func main() {
 }
 ```
 
-For all of response data please read more in file [struct_response.go](./struct_response.go)
+For all of response data please read more in file [struct_response.go](./response.go)
