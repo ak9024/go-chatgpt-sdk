@@ -5,7 +5,7 @@ name: Go tests coverage
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   tests:
@@ -21,14 +21,3 @@ jobs:
         uses: vladopajic/go-test-coverage@v2
         with:
           config: ./.testcoverage.yml
-
-      - name: make coverage badge
-        uses: action-badges/core@0.2.2
-        if: contains(github.ref, 'main')
-        with:
-          label: coverage
-          message: ${{ steps.coverage.outputs.badge-text }}
-          message-color: ${{ steps.coverage.outputs.badge-color }}
-          file-name: coverage.svg
-          badge-branch: badges ## orphan branch where badge will be committed
-          github-token: "${{ secrets.TOKEN }}"
