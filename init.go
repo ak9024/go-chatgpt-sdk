@@ -1,10 +1,10 @@
 package gochatgptsdk
 
-type chatgpt struct {
+type Config struct {
 	OpenAIKey string
 }
 
-type Config struct {
+type chatgpt struct {
 	OpenAIKey string
 }
 
