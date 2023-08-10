@@ -2,8 +2,9 @@
     <img src="./assets/go-chatgpt-sdk.png" />
     <h2>go-chatgpt-sdk</h2>
     <p>This Library Provides Unofficial Go Client SDK for OpenAI API</p>
-    ![tests coverage](https://github.com/ak9024/go-chatgpt-sdk/actions/workflows/test.yml/badge.svg)
 </div>
+
+![tests coverage](https://github.com/ak9024/go-chatgpt-sdk/actions/workflows/test.yml/badge.svg)
 
 ### Install
 
