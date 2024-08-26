@@ -1,8 +1,11 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ak9024/go-chatgpt-sdk/.github%2Fworkflows%2Ftest.yml)
+![GitHub top language](https://img.shields.io/github/languages/top/ak9024/go-chatgpt-sdk)
+![GitHub License](https://img.shields.io/github/license/ak9024/go-chatgpt-sdk)
+
 <div align="center">
     <img src="./assets/go-chatgpt-sdk.png" />
     <h2>go-chatgpt-sdk</h2>
     <p>This Library Provides Unofficial Go Client SDK for OpenAI API</p>
-    <img src="https://github.com/ak9024/go-chatgpt-sdk/actions/workflows/test.yml/badge.svg" />
 </div>
 
 ### Install
