@@ -1,10 +1,10 @@
-# go-chatgpt-sdk
-
-This Library Provides Unofficial Go Client SDK for OpenAI API
-
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ak9024/go-chatgpt-sdk/.github%2Fworkflows%2Ftest.yml)
 ![GitHub top language](https://img.shields.io/github/languages/top/ak9024/go-chatgpt-sdk)
 ![GitHub License](https://img.shields.io/github/license/ak9024/go-chatgpt-sdk)
+
+# go-chatgpt-sdk
+
+This Library Provides Unofficial Go Client SDK for OpenAI API
 
 ### Install
 
